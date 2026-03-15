@@ -37,11 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Internal apps
     "users",
     "rides",
     # Third party libraries
     "rest_framework",
     "rest_framework_simplejwt",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -135,4 +137,9 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
     ),
+    "DEFAULT_FILTER_BACKENDS": (
+        "django_filters.rest_framework.DjangoFilterBackend",
+    ),
+    "DEFAULT_PAGINATION_CLASS": "wingz_dev_assessment.pagination.DefaultCursorPagination",
+    "PAGE_SIZE": 10,
 }
