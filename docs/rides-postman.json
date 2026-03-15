@@ -1,0 +1,145 @@
+{
+  "info": {
+    "name": "Local",
+    "description": null,
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/token/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1:8000"
+          ],
+          "path": [
+            "api",
+            "token",
+            ""
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "chris@example.com",
+              "disabled": false,
+              "type": "default"
+            },
+            {
+              "key": "password",
+              "value": "password123",
+              "disabled": false,
+              "type": "default"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.variables.set(\"access_token\", body.access);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ride",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "key": "token",
+            "value": "{{access_token}}",
+            "type": "string"
+          }
+        },
+        "description": "",
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/rides/?sort_by=distance&latitude=34.05&longitude=-118.24",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1:8000"
+          ],
+          "path": [
+            "api",
+            "rides",
+            ""
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "dropoff"
+            },
+            {
+              "key": "status",
+              "value": "en-route"
+            },
+            {
+              "key": "status",
+              "value": "pickup"
+            },
+            {
+              "key": "riider_email",
+              "value": "chris@example.com"
+            },
+            {
+              "key": "sort_by",
+              "value": "pickup_time"
+            },
+            {
+              "key": "order",
+              "value": "desc"
+            },
+            {
+              "key": "sort_by",
+              "value": "distance"
+            },
+            {
+              "key": "latitude",
+              "value": "34.05"
+            },
+            {
+              "key": "longitude",
+              "value": "-118.24"
+            }
+          ],
+          "variable": []
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

@@ -129,6 +129,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+AUTH_USER_MODEL = "users.User"
+
 # Django REST Framework
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -142,4 +144,8 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PAGINATION_CLASS": "wingz_dev_assessment.pagination.DefaultCursorPagination",
     "PAGE_SIZE": 10,
+}
+
+SIMPLE_JWT = {
+    "USER_ID_FIELD": "id_user",
 }
