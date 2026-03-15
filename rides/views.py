@@ -17,8 +17,6 @@ from rides.permissions import IsAdminUser
 from rides.serializers import (
     RideReadSerializer,
     RideWriteSerializer,
-    RideEventReadSerializer,
-    RideEventWriteSerializer,
 )
 
 DISTANCE_BOUNDING_BOX_DEGREES = 0.5
